@@ -60,10 +60,4 @@ ln -s testdir/summary summary.s
 #####################################################
 # clean up workdir                                  #
 #####################################################
-#rm summary*
-#rm -rf testdir
-#rm trailer
-#rm HEADER
-#rm allcmdlist
-#rm syscmdlist
-#rm cmdlist
+rm -r !(ueb3.sh)
