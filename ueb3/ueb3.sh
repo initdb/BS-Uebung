@@ -53,11 +53,15 @@ mv header HEADER
 mkdir testdir
 # move summary to testdir
 mv summary testdir
+# copy file
 cp testdir/summary .
+# create hardlink
 ln testdir/summary summary2
+# create symbolic link
 ln -s testdir/summary summary.s
 
 #####################################################
 # clean up workdir                                  #
 #####################################################
+# remove everything but ueb3.sh script
 rm -r !(ueb3.sh)
