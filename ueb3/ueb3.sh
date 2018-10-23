@@ -49,13 +49,21 @@ tac summary | less
 wc header
 # rename header to HEADER
 mv header HEADER
+# create testdir
+mkdir testdir
+# move summary to testdir
+mv summary testdir
+cp testdir/summary .
+ln testdir/summary summary2
+ln -s testdir/summary summary.s
 
 #####################################################
 # clean up workdir                                  #
 #####################################################
-rm summary
-rm trailer
-rm HEADER
-rm allcmdlist
-rm syscmdlist
-rm cmdlist
+#rm summary*
+#rm -rf testdir
+#rm trailer
+#rm HEADER
+#rm allcmdlist
+#rm syscmdlist
+#rm cmdlist
