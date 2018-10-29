@@ -12,7 +12,7 @@ ls /bin/*d /usr/bin/*d > 1b
 ls /bin/*d /usr/bin/x*d > 1c
 
 # contain at least one digit
-ls /bin/?* /usr/bin/?* > 1d
+ls -d /bin/*[0-9]* /usr/bin/*[0-9]* > 1d
 
 # contains an e which is neither
 # in the beginning nor at the end
@@ -25,18 +25,18 @@ ls /bin/$WORD /usr/bin/$WORD > 1f
 
 # doesn't begin with x,y or z
 WORD=[!x-z]*
-ls /bin/$WORD /usr/bin/$WORD > 1g
+ls -d /bin/$WORD /usr/bin/$WORD > 1g
 
 # consist of 1 character
 WORD=?
-ls /bin/$WORD /usr/bin/$WORD > 1h
+ls -d /bin/$WORD /usr/bin/$WORD > 1h
 
 # consist of 2 characters
 WORD=??
-ls /bin/$WORD /usr/bin/$WORD > 1i
+ls -d /bin/$WORD /usr/bin/$WORD > 1i
 
 # consist of 2 or 3 character
-#ls /bin/?? /usr/bin/?? > j1 && ls /bin/??? /usr/bin/??? > j2
+ls /bin/?? /usr/bin/?? /bin/??? /usr/bin/??? > 1j
 
 # clean workdir 
 rm ??
