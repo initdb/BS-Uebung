@@ -21,6 +21,7 @@ sudo chgrp data datacontainer
 
 # change ownership with chown
 # set the setgid right on datacontainer
+# sudo since user not in group data
 sudo chmod g+s datacontainer # ask prof
 
 # create dir config2 in datacontainer

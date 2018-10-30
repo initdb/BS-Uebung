@@ -26,7 +26,7 @@ rm dstern*
 # home owned by me
 
 # why has the folder Desktop more than one link ?
-# ask prof
+# directory has alsways atleast 2 hardlinks name/ + ./
 
 # clean workdir 
 rm ??
