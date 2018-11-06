@@ -13,6 +13,7 @@
 
 # test: -a and -o or, but better to read is [] && [].
 # both ~ and $HOME possible
+# [[ && || ]] <-- supports normal c syntax! but not available on all systems ?!
 if [ $# -eq 1 ] && [ $1 = ~ ]; then
     echo "Yes, this is your home directory."
 else
