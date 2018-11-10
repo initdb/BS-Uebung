@@ -7,4 +7,4 @@
 # from each file to stdout
 # -d delimiter
 # -f select only these fields
-cut -d : -f 6 /etc/passwd
+cut -d : -f 6 /etc/passwd | grep "/home"
