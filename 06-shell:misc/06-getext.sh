@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#####################################################
+# 6.6 take a look at script template cap 5 p.19     #
+#####################################################
+
 print_usage ()
 {
     echo "Usage $0 [-f <filename>]"
