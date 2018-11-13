@@ -8,4 +8,4 @@
 HERE=$HOME
 
 # status change with ctime, modification with mtime
-find $HERE -type f -ctime 5
+find $HERE -type f -ctime -5

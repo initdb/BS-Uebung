@@ -8,8 +8,12 @@ print_usage ()
 
 filename=""
 mode=stdin
-while getopts f: opt; do
+while getopts hf: opt; do
     case $opt in
+    h )
+        print_usage
+        exit 0
+        ;;
     f )
         filename="$OPTARG"
         mode=file
