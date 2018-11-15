@@ -4,7 +4,6 @@
 # 6.8a how many "fuck"s are used in the linux kernel#
 # source ?                                          #
 #####################################################
-
 grep -r "fuck" . | wc -l
 
 # "-i" : ignores case
