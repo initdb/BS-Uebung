@@ -26,6 +26,7 @@ egrep -r -i "(fuck|pissed|bloody|bastard)" . | cut -d : -f 1 | sort -u -r
 # 6.8g replace bloody with damned in all files that #
 # contain bloody. cut -d : -f 1 only works with -f  #
 # xargs executes sed for each found file, wouldn't  #
-# work otherwise!!                                  #
+# work otherwise!! sed '/g' for all occurences and  #
+# '/I' for case insensitivity !!                    #
 #####################################################
-grep -r -i -o "bloody" . | cut -d : -f 1 | xargs sed -i 's/bloody/damned/g'
+grep -r -i -o "bloody" . | cut -d : -f 1 | xargs sed -i 's/bloody/damned/gI'
