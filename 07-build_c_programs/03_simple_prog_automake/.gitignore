@@ -50,3 +50,4 @@ m4/lt~obsolete.m4
 build-aux/
 *.o
 *.tar.gz
+simple_prog
