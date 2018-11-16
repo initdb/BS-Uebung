@@ -1,0 +1,15 @@
+Source: hello
+Section: misc
+Priority: optional
+Maintainer: Benedict Schwind <benedict.schwind@stud.fh-rosenheim.de>
+Build-Depends: debhelper (>= 10), autotools-dev
+Standards-Version: 4.1.2
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/hello.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/hello.git
+
+Package: hello
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: this is a description for a hello package
+ this is long a description for a hello package

@@ -1,0 +1,5 @@
+hello (1:2.10-1-0ubuntu1) trusty; urgency=medium
+
+  * Initial release (Closes: #all bugs ever)
+
+ -- Benedict Schwind <benedict.schwind@stud.fh-rosenheim.de>  Fri, 16 Nov 2018 21:34:15 +0100
