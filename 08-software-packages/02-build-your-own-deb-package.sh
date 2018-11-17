@@ -21,6 +21,7 @@ dh_make -f ../hello-2.10.tar.gz -s -y
 # delete unnecessary
 cd debian && rm *.ex *.EX README* 2> /dev/null
 
+# copy edited files to package
 test -f ../../changelog && cp ../../changelog .
 test -f ../../control && cp ../../control .
 test -f ../../copyright && cp ../../copyright .
@@ -31,4 +32,5 @@ cd ..
 # configure the build
 ./configure
 
+# build
 dpkg-buildpackage -us -uc
