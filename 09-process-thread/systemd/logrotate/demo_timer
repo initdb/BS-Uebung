@@ -1,0 +1,8 @@
+/var/log/demo_timer.log
+{
+        rotate 4
+        weekly
+        missingok
+        notifempty
+        compress
+}

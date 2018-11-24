@@ -1,0 +1,11 @@
+[Unit]
+Description=Demo timer that writes every second a message into its log
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/demo_timer_daemon
+ExecStopPost=/bin/rm /var/run/demo_timer_daemon.pid
+
+[Install]
+WantedBy=multi-user.target
+
