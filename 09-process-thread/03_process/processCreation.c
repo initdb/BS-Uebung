@@ -10,9 +10,8 @@ void work()
 {
     printf("doing heavy work... \n");
     sleep(20); //simulates the "heavy" work!!
-
+    
     counter++;
-    printf("done with %d\n", counter);
 }
 
 int main(int argc, char** argv)
@@ -32,10 +31,10 @@ int main(int argc, char** argv)
 
     pid_t pid[N];
 
-    while(counter <= N)
+    for(int i = 0; i < N; i++)
     {
         //pid_t pid;
-        pid[counter] = fork();
+        pid[i] = fork();
         work();
     }
 
