@@ -11,7 +11,6 @@ void work()
     printf("doing heavy work... \n");
     sleep(20); //simulates the "heavy" work!!
 
-    //TODO: Add code for created processes here
     counter++;
     printf("done with %d\n", counter);
 }
@@ -33,27 +32,14 @@ int main(int argc, char** argv)
 
     pid_t pid[N];
 
-    while(counter < N)
+    while(counter <= N)
     {
         //pid_t pid;
         pid[counter] = fork();
-        if (pid[counter] < 0)
-        {
-            printf("fork failed!\n");
-            exit(1);
-        }
-        else if (pid[counter] == 0)
-        {
-            printf("hi, I'm the child process\n");
-            work();
-            printf("goodbye\n");
-            exit(0);
-        }
-        else
-        {
-            printf("I'm the parent and I just forked a child, pid %d\n", pid[counter]);
-        }
+        work();
     }
+
+    printf("counter: %d\n", counter);
 
     return EXIT_SUCCESS;
 }
