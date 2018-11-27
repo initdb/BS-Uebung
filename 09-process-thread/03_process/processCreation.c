@@ -12,6 +12,7 @@ void work()
     sleep(20); //simulates the "heavy" work!!
     
     counter++;
+    exit(0);
 }
 
 int main(int argc, char** argv)
@@ -33,9 +34,28 @@ int main(int argc, char** argv)
 
     for(int i = 0; i < N; i++)
     {
-        //pid_t pid;
         pid[i] = fork();
-        work();
+
+        switch(pid[i])
+        {
+            case -1: //error
+                printf("Error: fork failed.\n");
+                exit(EXIT_FAILURE);
+                break;
+            case 0: //child
+                printf("PID %d: ready for work!\n", getpid());
+                work();
+                break;
+            default: //parent
+                break;
+        }
+    }
+
+    for(int i = 0; i < N; i++)
+    {
+        printf("Parent waits until child process with PID %d ends.\n", pid[i]);
+        waitpid(pid[i], NULL, 0);
+        printf("Child process with PID %d exited.\n", pid[i]);
     }
 
     printf("counter: %d\n", counter);

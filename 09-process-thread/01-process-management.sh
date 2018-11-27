@@ -22,6 +22,7 @@ ps aux | wc -l
 
 #####################################################
 # why are gaps between the pid ?
+# process which have already concluded.
 
 #####################################################
 # what is the lowest pid and what is the meaning
