@@ -47,6 +47,7 @@ int main(int argc, char** argv)
                 work();
                 break;
             default: //parent
+                sleep(1); // for better console output
                 break;
         }
     }
