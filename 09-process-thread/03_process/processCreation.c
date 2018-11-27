@@ -12,7 +12,7 @@ void work()
     sleep(20); //simulates the "heavy" work!!
     
     counter++;
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
 
 int main(int argc, char** argv)
@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     else
     {
         printf("Usage: %s N\n", argv[0]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     pid_t pid[N];
