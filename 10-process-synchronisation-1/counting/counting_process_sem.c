@@ -51,9 +51,10 @@ void semaphore_operation(int sid, int op)
     }
 }
 
-int main () {
+int main () 
+{
     //TODO: You may test if the semaphore already exist (use semget(...)). If not you create it.
-    semid = semget(KEY, 1, IPC_PRIVATE);
+    semid = semget(KEY, 0, IPC_PRIVATE);
     if(semid < 0)
     {
         create_semaphore();
@@ -68,7 +69,8 @@ int main () {
 
         //Open the file
         int file = open("counter", O_RDWR);
-        if (file == -1) {
+        if (file == -1)
+        {
             printf("Could not open file, exiting!\n");
             exit(1);
         }
