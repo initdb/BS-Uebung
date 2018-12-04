@@ -9,13 +9,14 @@ const int   P_OP = -1;
 const int   V_OP = 1;
 const int   PERM = 0644;
 const key_t KEY  = 565423;
+const int SEM_ARR_LENGTH = 1;
 
 static int semid;
 
 void create_semaphore()
 {
     // create semaphore
-    semid = semget(KEY, 1, IPC_CREAT | IPC_EXCL | PERM);
+    semid = semget(KEY, SEM_ARR_LENGTH, IPC_CREAT | IPC_EXCL | PERM);
     if(semid < 0)
     {
         perror("Error when creating the semaphore...\n");
@@ -43,6 +44,7 @@ void semaphore_operation(int sid, int op)
     struct sembuf semaphore;
     semaphore.sem_op = op;  // P = -1; V = 1
     semaphore.sem_flg = 0;  // no flags needed
+    semaphore.sem_num = 0;  
 
     if(semop(sid, &semaphore, 1) == 1)
     {
@@ -54,7 +56,7 @@ void semaphore_operation(int sid, int op)
 int main () 
 {
     //TODO: You may test if the semaphore already exist (use semget(...)). If not you create it.
-    semid = semget(KEY, 0, IPC_PRIVATE);
+    semid = semget(KEY, SEM_ARR_LENGTH, IPC_PRIVATE);
     if(semid < 0)
     {
         create_semaphore();

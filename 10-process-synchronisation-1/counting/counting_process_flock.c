@@ -3,22 +3,29 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/file.h>
 
 static int semid;
 
-int main () {
-    //TODO: You may test if the semaphore already exist (use semget(...)). If not you create it.
-
-
+int main ()
+{
     //Main task: Loop 2000000 times and add 1 to the counter inside the loop
-    for (int i = 0; i < 2000000; ++i) {
+    for (int i = 0; i < 200000; ++i)
+    {
         //TODO: You have to place the P/V operations here...
         //      But remember, the Linux API does not provide P/V directly.
-
+        int fd = open("counter.lck", O_RDWR);
+        if(fd < 0)
+        {
+            perror("no such file...\n");
+            exit(EXIT_FAILURE);
+        }
+        flock(fd, LOCK_EX);
 
         //Open the file
         int file = open("counter", O_RDWR);
-        if (file == -1) {
+        if (file == -1)
+        {
             printf("Could not open file, exiting!\n");
             exit(1);
         }
@@ -39,6 +46,9 @@ int main () {
         
         //Close the file
         close (file);
+
+        flock(fd, LOCK_UN);
+        close(fd);
     }
 
     printf("Finished!\n");
