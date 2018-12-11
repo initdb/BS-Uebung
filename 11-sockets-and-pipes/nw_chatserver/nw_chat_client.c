@@ -24,7 +24,8 @@ void* receiver_thread() {
     while(1) {
         char received_message[MAX_MESSAGE_LEN];
         //TODO: receive messages from the server
-        ssize_t size = -1;
+        ssize_t size = recv(network_socket, &received_message,
+            MAX_MESSAGE_LEN-1, 0);
         
         if(size <= 0) {
             break; //no data received or connection closed
@@ -47,17 +48,28 @@ int main(int argc, char** argv) {
         server_ip = argv[1];
     }
 
-    //TODO: Create the socket
+    //Create the socket
+    network_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if(network_socket < 0) {
+        printf("Error: can't create socket!\n");
+        exit(EXIT_FAILURE);
+    }
 
-
-    //TODO: Set the IP address and the port of the server (The server listens on port 15000)
+    //Set the IP address and the port of the server (The server listens on port 15000)
     //Hint:
     // - use "inet_aton(...)" to convert internet host address to binary form
     // - use "htons(...)" convert values between host and network byte order
     struct sockaddr_in address;
+    address.sin_family      = AF_INET;
+    inet_aton("127.0.0.1", &address.sin_addr); //convert internet host address to binary form
+    address.sin_port        = htons(PORT); //convert values between host and network byte order 
 
-    //TODO: Connect to server
-
+    //Connect to server
+    int connection_result = connect(network_socket, (struct sockaddr*) &address, (sizeof address));
+    if(connection_result != 0) {
+        printf("Error: can't connect to address\n");
+        exit(EXIT_FAILURE);
+    }
 
     //start the thread to receive messages from the server
     pthread_t thread_id = -1;
@@ -77,8 +89,8 @@ int main(int argc, char** argv) {
             break;
         }
 
-        //TODO: send message to the server
-        
+        //send message to the server
+        send(network_socket, message, strlen(message), 0);
     }
 
     //wait until the receive thread exits
