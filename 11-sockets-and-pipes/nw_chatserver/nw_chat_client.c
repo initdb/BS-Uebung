@@ -23,7 +23,7 @@ void* receiver_thread() {
     //endless loop to receive messages from the server
     while(1) {
         char received_message[MAX_MESSAGE_LEN];
-        //TODO: receive messages from the server
+        //receive messages from the server
         ssize_t size = recv(network_socket, &received_message,
             MAX_MESSAGE_LEN-1, 0);
         
