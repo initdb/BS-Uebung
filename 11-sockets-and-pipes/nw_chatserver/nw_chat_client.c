@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
     // - use "htons(...)" convert values between host and network byte order
     struct sockaddr_in address;
     address.sin_family      = AF_INET;
-    inet_aton("127.0.0.1", &address.sin_addr); //convert internet host address to binary form
+    inet_aton(server_ip, &address.sin_addr); //convert internet host address to binary form
     address.sin_port        = htons(PORT); //convert values between host and network byte order 
 
     //Connect to server
