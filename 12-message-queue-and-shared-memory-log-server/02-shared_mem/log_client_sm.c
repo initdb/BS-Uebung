@@ -57,14 +57,22 @@ int main() {
     //fetch the semaphores
     fetch_semaphore();
 
-    //TODO: get existing shared memory
+    //get existing shared memory
+    int shared_mem_id = shmget(SHM_KEY, 0, IPC_PRIVATE);
+    if(shared_mem_id < 0) {
+        perror("Error: can't get shared memory!\n");
+        exit(EXIT_FAILURE);
+    }
     
-    
-    //TODO: attach the shared memory
-    
+    //attach the shared memory
+    void* shared_mem_address = shmat(shared_mem_id, NULL, 0);
+    if(shared_mem_address == (void*)-1) {
+        perror("Error: can't attach shared memory!\n");
+        exit(EXIT_FAILURE);
+    }
 
-    //TODO: let buffer point the shared mem address as a char pointer
-    char* buffer = NULL;
+    //let buffer point the shared mem address as a char pointer
+    char* buffer = (char*)shared_mem_address;
     
     //client endless loop
     while(1) {
@@ -75,14 +83,20 @@ int main() {
             break;
         }
 
-        //TODO: use P/V and copy the message into the shared memory
-        //Hint: For copy use strcpy()
-        
+        //use P/V and copy the message into the shared memory
+        P(global_semid, READY_TO_WRITE);
+
+            //write the message into the shared memory
+            strcpy(buffer, message);
+
+        //signal the server that it can now read the shared memory
+        V(global_semid, READY_TO_READ);
     }
 
     //TODO detach shared memory
+    shmdt(shared_mem_address);
+    buffer = NULL;
+    shared_mem_address = NULL;
     
-
-
     return EXIT_SUCCESS;
 }
