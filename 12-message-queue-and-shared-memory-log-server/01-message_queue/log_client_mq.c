@@ -8,8 +8,18 @@
 key_t MESSAGE_QUEUE_KEY   = 0x4242; //key of the message queue
 #define MAX_MESSAGE_LEN     (1024)  //max length of messages
 
+//priority for messages
+typedef enum {
+    HIGH   = 1
+   ,NORMAL = 2
+   ,LOW    = 3
+} priority_t;
+
 //structure for messages
-//TODO: define message struct
+typedef struct {
+    long priority;
+    char message[MAX_MESSAGE_LEN];
+} message_t;
 
 
 int main() {
@@ -30,10 +40,18 @@ int main() {
             break;
         }
 
-        //TODO: prepare message
+        //prepare message
+        message_t message;
 
-        //TODO: send message to message queue
-        
+        message.priority = NORMAL;
+        strncpy(message.message, buffer, sizeof(message.message));
+
+        //send message to message queue
+        int size = msgsnd(message_queue_id, &message, MAX_MESSAGE_LEN-1, 0);
+        if(size < 0){
+            printf("Error at writing message to message queue!\n");
+            exit(EXIT_FAILURE);
+        }
     }
 
     return EXIT_SUCCESS;
