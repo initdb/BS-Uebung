@@ -119,3 +119,17 @@ ls -la
 #===================================================#
 # This may contain additional third-party software. 
 # Many systems don’t use /opt.
+
+#===================================================#
+# The /usr Directory                                #
+#===================================================#
+# The /usr directory may look relatively clean at first glance,
+# but a quick look at /usr/bin and /usr/lib reveals that there’s a lot here; 
+# /usr is where most of the user-space programs and data reside. 
+# In addition to /usr/bin, /usr/sbin, and /usr/lib, /usr contains the following:
+# /include Holds header files used by the C compiler.
+# /info Contains GNU info manuals (see 2.13 Getting Online Help).
+# /local Is where administrators can install their own software. 
+# Its structure should look like that of / and /usr.
+# /man Contains manual pages.
+# /share Contains files that should work on other kinds of Unix machines with no loss of functionality. In the past, networks of machines would share this directory, but a true /share directory is becoming rare because there are no space issues on modern disks. Maintaining a /share directory is often just a pain. In any case, /man, /info, and some other subdirectories are often found here.
