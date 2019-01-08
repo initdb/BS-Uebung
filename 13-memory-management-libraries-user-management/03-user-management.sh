@@ -15,7 +15,8 @@ groups test
 # create a new group dev_data
 sudo addgroup dev_data
 # add user test to group dev_data
-usermod -g dev_data test
+# -a append to -G group
+usermod -a -G dev_data test
 groups test
 
 cat /etc/passwd | grep test
