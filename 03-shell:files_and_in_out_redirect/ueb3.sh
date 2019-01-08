@@ -65,3 +65,9 @@ ln -s testdir/summary summary.s
 #####################################################
 # remove everything but ueb3.sh script
 rm -r !(ueb3.sh)
+
+#####################################################
+# synthax highlight                                 #
+#####################################################
+# show the contents of of main.c with synthax highlighted
+pygmentize -g -O style=colorful,linenos=1 main.c
