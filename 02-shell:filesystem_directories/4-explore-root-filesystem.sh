@@ -132,7 +132,8 @@ ls -la
 # /local Is where administrators can install their own software. 
 # Its structure should look like that of / and /usr.
 # /man Contains manual pages.
-# /share Contains files that should work on other kinds of Unix machines with no loss of functionality. In the past,
+# /share Contains files that should work on other kinds of Unix machines with 
+# no loss of functionality. In the past,
 # networks of machines would share this directory, 
 # but a true /share directory is becoming rare because there are 
 # no space issues on modern disks. Maintaining a /share directory is often just a pain.
