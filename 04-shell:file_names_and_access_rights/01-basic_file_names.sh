@@ -25,15 +25,15 @@ ls /bin/$WORD /usr/bin/$WORD > 1f
 
 # doesn't begin with x,y or z
 WORD=[!x-z]*
-ls -d /bin/$WORD /usr/bin/$WORD > 1g
+ls /bin/$WORD /usr/bin/$WORD > 1g
 
 # consist of 1 character
 WORD=?
-ls -d /bin/$WORD /usr/bin/$WORD > 1h
+ls /bin/$WORD /usr/bin/$WORD > 1h
 
 # consist of 2 characters
 WORD=??
-ls -d /bin/$WORD /usr/bin/$WORD > 1i
+ls /bin/$WORD /usr/bin/$WORD > 1i
 
 # consist of 2 or 3 character
 ls /bin/?? /usr/bin/?? /bin/??? /usr/bin/??? > 1j
