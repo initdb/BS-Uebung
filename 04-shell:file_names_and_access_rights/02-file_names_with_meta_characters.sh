@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # list all files inside the home directory
-# that begin with
-ls -d ~/.* > 2a
+# that begin with .
+ls -d $HOME/.* > 2a
 
 # that contain . but not in the beginning
-ls -d ~/?*.* > 2b
+ls -d $HOME/?*.* > 2b
 
-# create a file with the name d?
+# create a file with the name "d?"
 touch d\?
 
-# create a file with the name d*
+# create a file with the name "d*""
 touch d\*
 
 # rm file d?
@@ -26,7 +26,7 @@ rm dstern*
 # home owned by me
 
 # why has the folder Desktop more than one link ?
-# directory has alsways atleast 2 hardlinks name/ + ./
+# directory has alsways atleast 2 hardlinks name/ + ./ + ../
 
 # clean workdir 
 rm ??
