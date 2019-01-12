@@ -12,7 +12,7 @@ ls /bin/*d /usr/bin/*d > 1b
 ls /bin/*d /usr/bin/x*d > 1c
 
 # contain at least one digit
-ls -d /bin/*[0-9]* /usr/bin/*[0-9]* > 1d
+ls /bin/*[0-9]* /usr/bin/*[0-9]* > 1d
 
 # contains an e which is neither
 # in the beginning nor at the end
