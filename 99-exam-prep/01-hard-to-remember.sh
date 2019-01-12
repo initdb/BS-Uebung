@@ -83,6 +83,7 @@ test -r file -o -w file
 #####################################################
 
 # create and fill files with index i
+# seq <start> <increment> <end>
 for i in $(seq 1 1 9)
 do
     echo "$i" > "file_$i"
@@ -97,3 +98,66 @@ else
     echo "No, this isn't your home directory."
     exit 1
 fi
+
+i=1
+while [ $i -le 100 ]
+do
+    rm file$i
+    i=$(expr $i + 1)
+   # or let i+=1
+done
+
+#####################################################
+# shell: search                                     #
+#####################################################
+# -i : ignore case
+# -o : returns only the match
+grep "pattern" file
+# ^root     | beginning of the line
+# root$     | end of the line
+# ^root$    | complete line
+# ro.t      | any single character
+# ro*t      | preceding character match zero or more times
+# root.*t   | any character zero or more times
+# r[Oo]ot   | one character from the list of characters
+# [^f]oot   | no character from the list of characters
+
+#####################################################
+egrep "pattern" file
+# ro+t      | preceding character will be matched one or more times
+# roo?t     | preceding character will be matched zero or more times
+# ro{2}t    | exactly match n times
+# root|dev  | alternative matches
+
+#####################################################
+find /var -type f       # find all files
+find /var -type d       # find all directories
+
+find . -name "*.txt"    # find all files which name contains pattern
+find . -iname "*.txt"   # ignore case
+
+find . -name "*txt" -exec rm {} \; # execute a command
+
+# status change with ctime, modification with mtime
+find $HOME -type f -ctime -5
+
+#####################################################
+# string manipulation
+file="file.category.txt"
+echo "shortest match from the front: ${file#*.}"
+# category.txt
+echo "shortest match from the back: ${file%*.}"
+# file.category
+echo "longest match from the front: ${file##*.}"
+# txt
+echo "longest match from the back: ${file%%.}"
+# file
+
+#####################################################
+# shell: misc                                       #
+#####################################################
+# cut: prints selected parts of lines
+# from each file to stdout
+# -d delimiter
+# -f select only these fields
+cut -d : -f 6 /etc/passwd | grep "/home"
