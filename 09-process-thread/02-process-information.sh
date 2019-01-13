@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #####################################################
+# process information                               #
+#####################################################
 # find the process PID of demo_programm
 # second column
 ./demo_program &
