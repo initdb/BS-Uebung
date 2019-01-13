@@ -241,3 +241,57 @@ apt remove rar
 #####################################################
 dpkg -i rar     # install package
 dpkg -r rar     # remove package
+
+#####################################################
+# boot procedure: UEFI                              #
+#####################################################
+#   +------------------------------+
+#   |           Power on           |
+#   +------------------------------+
+#                   |
+#                   v
+#   +------------------------------+
+#   |             UEFI             |
+#   | Unified Extensible Firmware  |
+#   | Interface -> executes EFI    |
+#   | programm files               |
+#   +------------------------------+
+#                   v
+#   +------------------------------+
+#   |              GPD             |
+#   | GUID Partition Table         |
+#   | -> describes disk partitions |
+#   +------------------------------+
+#                   v
+#   +------------------------------+
+#   |       Boot loader: GRUB2     |
+#   | Grand Unified Bootloader 2   |
+#   | -> executes boot menu/kernel |
+#   +------------------------------+
+#                   v
+#   +------------------------------+
+#   |           Boot menu          |
+#   | -> choose kernel for boot    |
+#   +------------------------------+
+#                   v
+#   +------------------------------+
+#   |          Linux kernel        |
+#   | -> executes /bin/systemd     |
+#   +------------------------------+
+#                   v
+#   +------------------------------+
+#   |      User space: systemd     |
+#   | -> executes runlevel         |
+#   | programms                    |
+#   +------------------------------+
+#                   v
+#   +------------------------------+
+#   |            Targets           |
+#   | Starts Targets /etc/systemd/ |
+#   | system/default.target        |
+#   +------------------------------+
+#                   |
+#                   v
+#   +------------------------------+
+#   |     Linux ready for work     |
+#   +------------------------------+
