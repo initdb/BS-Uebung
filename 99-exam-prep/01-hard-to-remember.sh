@@ -104,7 +104,7 @@ while [ $i -le 100 ]
 do
     rm file$i
     i=$(expr $i + 1)
-   # or let i+=1
+    # or let i+=1
 done
 
 #####################################################
@@ -161,3 +161,53 @@ echo "longest match from the back: ${file%%.}"
 # -d delimiter
 # -f select only these fields
 cut -d : -f 6 /etc/passwd | grep "/home"
+
+# command substitution
+echo "you are located here: $(pwd)"
+
+# asynchronous commands
+sleep 5&        # do nothing 5 sec in the background
+echo "do something useful, while sleeping..."
+# wait $!         # wait until the process finished
+
+sleep 60&       # 1 min
+jobs            # list running background jobs
+
+sleep 600       # 6 min
+CTRL+Z          # pauses a runnig forground process
+bg %1           # puts the paused process in the background
+fg %1           # puts the paused process 1 in the foreground
+
+#####################################################
+# build                                             #
+#####################################################
+gcc -c main.c               # compile without linking
+gcc -o hello_world main.o   # link main.o + deps
+gcc -o hello_world main.c
+./hello_world               # execute
+#####################################################
+# make
+make
+make clean
+
+#####################################################
+# commands for ELFs
+nm hello_world          # list all symbols from the object file
+readelf -a hello_world  # display information about an ELF
+                        # object file
+
+#####################################################
+# build with automake                               #
+#####################################################
+# init build system
+autoreconf -i
+# configure the build
+./configure
+# build
+make
+# install the programm
+sudo make install
+# run the programm
+simple_prog
+# uninstall the programm
+sudo make uninstall
