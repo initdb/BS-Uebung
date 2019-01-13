@@ -359,3 +359,14 @@ CRTL+C
 killall myprog      # or kill pid
 # hard kill
 killall -9 myprog   # or kill -9 pid
+# wait for a process to finish
+wait pid
+
+#####################################################
+# race condition                                    #
+#####################################################
+# semaphores
+# seminit(s,1);
+# P(s); -> -1
+# ... critical area ...
+# V(s); -> 1
