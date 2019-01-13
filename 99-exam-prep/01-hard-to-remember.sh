@@ -344,3 +344,18 @@ dpkg -r rar     # remove package
 #       * can execute any CPU instruction
 #       * can access any memory address
 #       * crashes in the kernel are "catastrophic": system stop!
+
+#####################################################
+# process management & information                  #
+#####################################################
+# display all running processes
+ps aux
+# search for your process
+ps aux | grep myprog
+# stop the process
+# when in foreground
+CRTL+C
+# when in background 
+killall myprog      # or kill pid
+# hard kill
+killall -9 myprog   # or kill -9 pid
