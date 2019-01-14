@@ -439,3 +439,16 @@ wait pid
 # pipe          | X  | _x_ |     X      |      |         | X  |     |
 # message queue | X  |  X  |     X      |      |         | X  |  X  |
 # shared memory | XX |  X  |     X      |      |    X    | XX |     |   X
+
+#####################################################
+# deadlocks                                         #
+#####################################################
+# safe state:
+#   * a state is save, if there is no deadlock,
+#     and there exists at least.
+#   * one sequence of processes that ends not in a deadlock.
+# unsafe state:
+#   * a state is unsafe if there is a deadlock, or there
+#     exists only sequences that end in a deadlock.
+#   * it is not guaranteed that all processes can finish.
+#   * a deadlock is an unsafe state
