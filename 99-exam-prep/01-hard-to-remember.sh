@@ -387,3 +387,43 @@ wait pid
 #                           | only in one direction.
 # full-duplex/bidirectional | communication over a "channel"
 #                           | in both directions.
+
+#####################################################
+# socket: connection oriented (TCP)                 #
+#####################################################
+# void server() {                                | void client() {
+#   socket(...); //create comm. interface        |
+#   bind(...);   //connect address with socket   |
+#   listen(...); //create a queue                |
+#   accept(...); //wait until client connects    |
+#                                                |   socket(...); //create comm. interface
+#                                                |   connect(...); //connect to server
+#   //unblock the server                         |
+#                                                |   //send data
+#                                                |   send(...)/write(...);
+#   //receive data                               |
+#   //recv(...)/read(...)                        |
+#   //...                                        |   //...
+#                                                |
+#                                                |   //close socket and connection
+#                                                |   close(...);
+#   //close socket and connection                |
+#   close(...);                                  |
+# }                                              | }
+#####################################################
+# socket: connectionless (UDP)                      #
+#####################################################
+# void server() {                                | void process2() {
+#   socket(...);    //create comm. interface     |
+#   bind(...);      //connect address with socket|
+#   recvfrom(...);  //receive from socket        |
+#                                                |   socket(...); //create comm. interface
+#                                                |   sendto(...); //send data
+#   //...                                        |   //...
+#                                                |   recvfrom(...) //receive from socket
+#   sento(...);     //send data                  |   //...
+#   //...                                        |
+#                                                |   //close socket and connection
+#   //close socket and connection                |   close(...);
+#   close(...);                                  |
+# }                                              | }
