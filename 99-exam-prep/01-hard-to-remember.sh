@@ -370,3 +370,20 @@ wait pid
 # P(s); -> -1
 # ... critical area ...
 # V(s); -> 1
+
+#####################################################
+# process communication                             #
+#####################################################
+# send(destination, message)| send a message to the destination.
+# recv(source, &message)    | receive a message from the source.
+# blocking/synchron         | send()/recv() blocks until the
+#                           | data is fully transfered.
+# non-blocking/asynchron    | send()/recv() immediatly returns
+#                           | and the process can proceed.
+# protocol required         | a protocol defines the order of
+#                           | the send()/recv() between pro-
+#                           | cesses and the message format.
+# half-duplex/unidirectional| communication over a "channel"
+#                           | only in one direction.
+# full-duplex/bidirectional | communication over a "channel"
+#                           | in both directions.
