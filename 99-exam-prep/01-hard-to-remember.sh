@@ -427,3 +427,15 @@ wait pid
 #   //close socket and connection                |   close(...);
 #   close(...);                                  |
 # }                                              | }
+
+#####################################################
+# process communication summary                     #
+#####################################################
+# mechanism     |data|store|acess contr.|remote|bidirect.|fast|prio.|sync req.
+# --------------+----+-----+------------+------+---------+----+-----+---------
+# signal        |    |     |            |      |         | X  |     |
+# unix socket   | X  |     |     X      |      |    X    | X  |     |
+# network socket| X  |     |            |   X  |    X    |    |     |
+# pipe          | X  | _x_ |     X      |      |         | X  |     |
+# message queue | X  |  X  |     X      |      |         | X  |  X  |
+# shared memory | XX |  X  |     X      |      |    X    | XX |     |   X
