@@ -142,7 +142,8 @@ find . -name "*txt" -exec rm {} \; # execute a command
 find $HOME -type f -ctime -5
 
 #####################################################
-# string manipulation
+# string manipulation                               #
+#####################################################
 file="file.category.txt"
 echo "shortest match from the front: ${file#*.}"
 # category.txt
@@ -452,3 +453,23 @@ wait pid
 #     exists only sequences that end in a deadlock.
 #   * it is not guaranteed that all processes can finish.
 #   * a deadlock is an unsafe state
+
+#####################################################
+# memory management                                 #
+#####################################################
+# caching :
+# data buffers on various locations, for example
+# CPU cache, memory cache and disk cache
+#
+# hit: 
+# a hit occours on repeated access of the same
+# memory address
+# fault:
+# occours on the first access. the cache is to small
+# to buffer all data.
+
+#####################################################
+# shared libraries                                  #
+#####################################################
+# compile supermath as shared lib
+gcc -fPIC -shared -o libsupermath.so supermath.c
