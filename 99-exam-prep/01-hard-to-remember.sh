@@ -473,3 +473,7 @@ wait pid
 #####################################################
 # compile supermath as shared lib
 gcc -fPIC -shared -o libsupermath.so supermath.c
+
+# link against a lib existing in /usr/lib or /lib
+# note: the lib is excluded in the -l command!!
+gcc -o math math.c -lsupermath
