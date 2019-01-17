@@ -35,13 +35,17 @@
 # example: printk("Exiting %s\n", NAME);
 
 # why is it not possible to read the same data twice from the device ?
-# the buffer gets freeed after a read() call concluded (exit()). ?
+# after reading the count is substracted from the position:
+# *f_pos -= count;
 
 # how is this type of reading called ?
-# queue ?
+# consuming read
 
 # how is it avoided that the module is beeing unloaded while it is in use ?
-# while in use the device is registered ?
+# while in use the device is registered with the function
+# try_module_get() which increments the used by count of the
+# kernel module. try_module_put() decrements this counter.
+# while this counter is not zero the module can't be removed.
 
 # in which mode is the module running ? in system- or usermode ?
-# since it is running in the kernel, system mode ?.
+# since it is running in the kernel-space -> system mode.

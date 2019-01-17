@@ -28,10 +28,10 @@ gcc -o mycat mycat.c
 # from scull0 to scull1. Then read the content 
 echo "Hello there" > /dev/scull0
 ./mycat /dev/scull0 > /dev/scull1
-cat /dev/scull1
+./mycat /dev/scull1
 
 # unload the driver module
-rmmod scull
+sudo rmmod scull
 
 # remove both device files
 rm /dev/scull*
