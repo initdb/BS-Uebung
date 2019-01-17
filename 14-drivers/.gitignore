@@ -1,0 +1,12 @@
+modules.order
+Module.symvers
+scull.ko
+scull.mod.c
+scull.mod.o
+scull.o
+.scull.ko.cmd
+.scull.mod.o.cmd
+.scull.o.cmd
+.cache.mk
+.tmp_versions
+mycat
