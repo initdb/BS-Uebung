@@ -477,3 +477,15 @@ gcc -fPIC -shared -o libsupermath.so supermath.c
 # link against a lib existing in /usr/lib or /lib
 # note: the lib is excluded in the -l command!!
 gcc -o math math.c -lsupermath
+
+#####################################################
+# device files                                      #
+#####################################################
+# create a device file
+mknod /dev/device_file TYPE MAJOR MINOR
+# TYPE = c or b
+# MAJOR = device type and corresponding driver
+# MINOR = device within the driver
+
+# delete a device fie
+rm /dev/device_file
