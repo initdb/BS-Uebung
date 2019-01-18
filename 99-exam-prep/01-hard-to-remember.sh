@@ -489,3 +489,15 @@ mknod /dev/device_file TYPE MAJOR MINOR
 
 # delete a device fie
 rm /dev/device_file
+
+#####################################################
+# kernel module commands                            #
+#####################################################
+# list the loaded modules /proc/modules
+lsmod
+# load the module in to the kernel
+insmod module.ko
+modprobe module
+# unload the module
+rmmod module
+modprobe -r module
