@@ -335,7 +335,7 @@ dpkg -r rar     # remove package
 #   +-----------------------------------------------+
 #   User space:
 #       * all code outside the kernel
-#       * also called "userland
+#       * also called "userland"
 #       * restricted (encapsulated) access to the hardware
 #       * can only use a subset of CPU instructions
 #       * can only access the assigned memory address
@@ -414,7 +414,7 @@ wait pid
 #####################################################
 # socket: connectionless (UDP)                      #
 #####################################################
-# void server() {                                | void process2() {
+# void server() {                                | void client() {
 #   socket(...);    //create comm. interface     |
 #   bind(...);      //connect address with socket|
 #   recvfrom(...);  //receive from socket        |
