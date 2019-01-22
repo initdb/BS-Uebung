@@ -487,7 +487,7 @@ mknod /dev/device_file TYPE MAJOR MINOR
 # MAJOR = device type and corresponding driver
 # MINOR = device within the driver
 
-# delete a device fie
+# delete a device file
 rm /dev/device_file
 
 #####################################################
@@ -501,3 +501,14 @@ modprobe module
 # unload the module
 rmmod module
 modprobe -r module
+
+#####################################################
+# kernel module commands                            #
+#####################################################
+# create a device file
+mknod /dev/devicefile TYPE MAJOR MINOR
+# TYPE = c or b
+# MAJOR = device type and corresponding driver
+# MINOR = device within the driver (major_device_number)
+# delete a device file
+rm /dev/device_files
